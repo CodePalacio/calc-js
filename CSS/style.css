@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10em;
+    
+}
+body::before{
+    content: '';
+    position: fixed;
+    background: url(../img/wp9608168-strata-liquid-wallpapers.jpg) no-repeat center center;
+    background-size: cover;
+    animation: animationZoom 20s infinite;
+    z-index: -1;
+    inset: 0;
+}
+
+.calc{
+    width: 400px;
+    padding: .5em;
+    border: 2px solid #ffffff1e;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 18px 100px -60px black;
+    backdrop-filter: blur(15px);
+}
+.calc h2{
+    font-size: .8em;
+    font-weight: 300;
+    color: #666;
+}
+
+#operations{
+    text-align: right;
+}
+
+#current-operation,
+#previus-operation{
+    padding: .2em;
+    overflow-wrap: break-word;
+    min-height: 1.6em;
+}
+
+#previus-operation{
+    color: #777;   
+}
+#current-operation{
+    font-size: 3em;
+    font-weight: 700;
+}
+
+#buttons-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3px;
+}
+#buttons-container button{
+    border: 1px solid transparent;
+    border-radius: 2px;
+    height: 4em;
+    font-size: 1.2em;
+    background-color:#dbdbdb;
+    cursor: pointer;
+}
+#buttons-container button:hover{
+    background-color: #dbdbdbcc;
+}
+#buttons-container #equal{
+    grid-column: span 2;
+    background-color: #75a5cb;
+}
+#buttons-container #equal:hover{
+    background-color: #3a91d8;
+}
+#buttons-container .number{
+    background-color:#f3f3f3;
+}
+#buttons-container .number:hover{
+    background-color:#bababa;
+    border-color: #999;
+}
+
+@keyframes animationZoom{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.5);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
