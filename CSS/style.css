@@ -26,7 +26,7 @@ body::before{
     width: 400px;
     padding: .5em;
     border: 2px solid #ffffff1e;
-    color: black;
+    color: aliceblue;
     display: flex;
     flex-direction: column;
     border-radius: 8px;
