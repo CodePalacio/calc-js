@@ -22,15 +22,33 @@ class Calculator{
 
     // Process all calculator operations
     processOperation(operation){
+        if(currentOperationText.innerText === ''){
+            if(this.previusOperationText.innerText !== ''){
+                this,changeOperation(operation);
+            }
+            return;
+        }
         
         // Get current and previus value
         let operationValue
-        const previus = +this.previusOperationText.innerText;
+        const previus = +this.previusOperationText.innerText.split(" ")[0]; 
         const current = +this.currentOperationText.innerText;
 
         switch(operation){
             case '+':
                 operationValue = previus + current;
+                this.updateScreen(operationValue, operation, previus, current);
+                break;
+            case '-':
+                operationValue = previus - current;
+                this.updateScreen(operationValue, operation, previus, current);
+                break;
+            case '/':
+                operationValue = previus / current;
+                this.updateScreen(operationValue, operation, previus, current);
+                break;
+            case '*':
+                operationValue = previus * current;
                 this.updateScreen(operationValue, operation, previus, current);
                 break;
             default:
@@ -47,7 +65,28 @@ class Calculator{
     ) {
         console.log(operationValue, operation, previus, current);
 
-        this.currentOperationText.innerText += this.currentOperation;
+        if(operationValue === null) {
+            this.currentOperationText.innerText += this.currentOperation;
+        } else{
+            if(previus === 0){
+                operationValue = current;
+            }
+            this.previusOperationText.innerText = `${operationValue} ${operation}`
+            this.currentOperationText.innerText = '';
+        }
+    }
+
+    //   Mudar operador
+    changeOperation(operation){
+
+        const mathOperations = ['*', '/', '+', '-']
+
+        if(!mathOperations.includes(operation)){   
+            return;
+        }
+
+        this.previusOperationText.innerText = this.previusOperationText.innerText.slice(0, -1) + operation;
+
     }
 }
 
